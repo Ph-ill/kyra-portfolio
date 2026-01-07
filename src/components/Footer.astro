@@ -146,6 +146,24 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
             aria-label="Navigate to About section"
             >About</a
           >
+          <a
+            href={siteConfig.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+            aria-label={`Download ${siteConfig.name}'s resume (opens in new tab)`}
+          >
+            Resume
+          </a>
+          <a
+            href="https://blog.coolphill.com/phill/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+            aria-label={`Visit ${siteConfig.name}'s blog (opens in new tab)`}
+          >
+            Blog
+          </a>
           {
             hasProjects && (
               <a
