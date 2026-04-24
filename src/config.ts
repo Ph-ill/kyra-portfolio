@@ -31,7 +31,7 @@ export const siteConfig = {
     ],
   },
   pov:
-    "Most talent functions are built for a version of the company that no longer exists. I help organizations catch up and build systems that do not need to be rebuilt every two years.",
+    "Most talent functions are built for a version of the company that no longer exists. I help organizations catch up and build systems that don't need to be rebuilt every two years.",
   specializations: [
     {
       name: "Talent Acquisition Systems",
