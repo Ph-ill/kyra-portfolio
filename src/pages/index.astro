@@ -1,12 +1,15 @@
 ---
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
+import Statement from "../components/Statement.astro";
 import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
+import Experience from "../components/Experience.astro";
+import Testimonials from "../components/Testimonials.astro";
+import About from "../components/About.astro";
+import DualCTA from "../components/DualCTA.astro";
+import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
-import VisitorTracker from "../components/VisitorTracker.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
 ---
@@ -15,101 +18,63 @@ import "../styles/global.css";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Phill Scargill - Control Systems Engineer</title>
-    <meta name="description" content="Phill Scargill is a Control Systems Engineer specializing in automation, PLC programming, and full-stack development. Based in Austin, TX." />
-    <meta name="keywords" content="control systems engineer, automation, PLC programming, full-stack development, Phill Scargill, Austin TX" />
-    <meta name="author" content="Phill Scargill" />
-    <meta name="robots" content="index, follow" />
-    
-    <!-- Additional Meta Tags for Better Social Sharing -->
-    <meta name="application-name" content="Phill Scargill Portfolio" />
-    <meta name="apple-mobile-web-app-title" content="Phill Scargill" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    
-    <!-- Open Graph / Facebook -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{siteConfig.metaTitle}</title>
+    <meta name="description" content={siteConfig.description} />
+    <meta name="author" content={siteConfig.fullName} />
+    <meta name="theme-color" content="#0c0d10" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://coolphill.com/" />
-    <meta property="og:title" content="Phill Scargill - Control Systems Engineer" />
-    <meta property="og:description" content="Control Systems Engineer & Full-Stack Developer specializing in automation, PLC programming, and modern web development. Based in Austin, TX." />
-    <meta property="og:image" content="https://coolphill.com/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Phill Scargill - Control Systems Engineer Portfolio" />
-    <meta property="og:site_name" content="Phill Scargill Portfolio" />
-    <meta property="og:locale" content="en_US" />
-    
-    <!-- WhatsApp Specific Meta Tags -->
-    <meta property="og:image:secure_url" content="https://coolphill.com/og-image.png" />
-    <meta property="og:image:type" content="image/png" />
-    
-
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://coolphill.com/" />
-    <meta property="twitter:title" content="Phill Scargill - Control Systems Engineer" />
-    <meta property="twitter:description" content="Control Systems Engineer & Full-Stack Developer specializing in automation, PLC programming, and modern web development. Based in Austin, TX." />
-    <meta property="twitter:image" content="https://coolphill.com/og-image.png" />
-    <meta property="twitter:image:alt" content="Phill Scargill - Control Systems Engineer Portfolio" />
-    <meta property="twitter:creator" content="@Ph_ill" />
-    <meta property="twitter:site" content="@Ph_ill" />
-
-    
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#E0CCFA" />
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://coolphill.com/" />
-    
-    <!-- Version: 1.0.1 - API Debug Build -->
-    
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Phill Scargill",
-        "jobTitle": "Control Systems Engineer",
-        "description": "Control Systems Engineer specializing in automation, PLC programming, and full-stack development",
-        "url": "https://coolphill.com",
-        "sameAs": [
-          "https://www.linkedin.com/in/phillip-scargill-4a709a274/",
-          "https://github.com/Ph-ill"
-        ],
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Self-employed"
-        },
-        "knowsAbout": [
-          "Control Systems",
-          "Automation",
-          "PLC Programming",
-          "Full-stack Development",
-          "Industrial Engineering"
-        ]
-      }
-    </script>
-    
+    <meta property="og:title" content={siteConfig.metaTitle} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:url" content={siteConfig.siteUrl} />
+    <meta property="og:image" content={`${siteConfig.siteUrl}/og-image.png`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteConfig.metaTitle} />
+    <meta name="twitter:description" content={siteConfig.description} />
+    <meta name="twitter:image" content={`${siteConfig.siteUrl}/og-image.png`} />
+    <link rel="canonical" href={siteConfig.siteUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: siteConfig.fullName,
+      jobTitle: siteConfig.title,
+      description: siteConfig.description,
+      url: siteConfig.siteUrl,
+      sameAs: [siteConfig.social.linkedin],
+    })} />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header />
     <main id="main-content">
       <Hero />
-      <About />
+      <Statement />
       <Projects />
-      <Experience />
       <Education />
+      <Experience />
+      <Testimonials
+        id="testimonials-consulting"
+        kicker="Testimonials"
+        heading="What consulting clients and partners say about working with me."
+        items={siteConfig.testimonials.consulting}
+      />
+      <About />
+      <Testimonials
+        id="testimonials-leadership"
+        kicker="Leadership"
+        heading="What employers and colleagues say about how I build teams and systems."
+        items={siteConfig.testimonials.leadership}
+      />
+      <DualCTA />
+      <Contact />
     </main>
     <Footer />
-    <VisitorTracker />
   </body>
 </html>

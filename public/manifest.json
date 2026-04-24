@@ -1,11 +1,11 @@
 {
-  "name": "Phill Scargill - Control Systems Engineer Portfolio",
-  "short_name": "Phill Scargill",
-  "description": "Professional portfolio showcasing expertise in control systems engineering, PLC programming, and full-stack development",
+  "name": "Built By Kyra",
+  "short_name": "Kyra",
+  "description": "Talent acquisition and people operations consultant portfolio for Kyra Scargill",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#3b82f6",
+  "background_color": "#121417",
+  "theme_color": "#121417",
   "orientation": "portrait-primary",
   "icons": [
     {

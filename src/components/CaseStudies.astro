@@ -1,0 +1,49 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="case-studies" class="section-shell" aria-labelledby="case-studies-heading">
+  <div class="section-grid gap-y-8">
+    <div class="col-span-12 lg:col-span-4">
+      <p class="section-kicker">Case Studies</p>
+      <h2 id="case-studies-heading" class="section-heading">
+        Built around business problems, not generic recruiting tasks.
+      </h2>
+    </div>
+    <div class="col-span-12 space-y-5 lg:col-span-8">
+      {siteConfig.caseStudies.map((study) => (
+        <article class="panel panel-hover space-y-6">
+          <div class="space-y-3">
+            <p class="text-sm uppercase tracking-[0.28em] text-[var(--color-accent)]">
+              {study.client}
+            </p>
+            <h3 class="font-display text-3xl leading-tight text-[var(--color-text)] md:text-4xl">
+              {study.headline}
+            </h3>
+          </div>
+          <div class="grid gap-6 md:grid-cols-3">
+            <div class="space-y-2">
+              <p class="case-label">Situation</p>
+              <p class="case-copy">{study.situation}</p>
+            </div>
+            <div class="space-y-2">
+              <p class="case-label">What I Did</p>
+              <p class="case-copy">{study.work}</p>
+            </div>
+            <div class="space-y-2">
+              <p class="case-label">Outcome</p>
+              <p class="case-copy">{study.outcome}</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2" role="list" aria-label={`Specialty tags for ${study.client}`}>
+            {study.tags.map((tag) => (
+              <span role="listitem" class="tag">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

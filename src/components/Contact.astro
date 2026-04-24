@@ -1,0 +1,93 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="contact" class="section-shell" aria-labelledby="contact-heading">
+  <div class="section-grid gap-y-8">
+    <div class="col-span-12 lg:col-span-4">
+      <p class="section-kicker">Contact</p>
+      <h2 id="contact-heading" class="section-heading">
+        Start with context, not ceremony.
+      </h2>
+      <p class="mt-6 max-w-xl text-base leading-7 text-[var(--color-soft)]">
+        {siteConfig.contact.intro}
+      </p>
+      <p class="mt-4 text-sm leading-6 text-[var(--color-muted)]">
+        {siteConfig.contact.statusNote}
+      </p>
+    </div>
+    <div class="col-span-12 lg:col-span-8">
+      <form id="contact-form" class="panel space-y-5" novalidate>
+        <div class="grid gap-5 md:grid-cols-2">
+          <label class="form-field">
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="form-field">
+            <span>Company</span>
+            <input type="text" name="company" autocomplete="organization" />
+          </label>
+        </div>
+        <label class="form-field">
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label class="form-field">
+          <span>What do you need help with?</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <button type="submit" class="button-primary">
+            Send Inquiry
+          </button>
+          <a
+            href={siteConfig.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium uppercase tracking-[0.2em] text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
+          >
+            Or message me on LinkedIn
+          </a>
+        </div>
+        <p id="contact-status" class="text-sm leading-6 text-[var(--color-soft)]" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("contact-status");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    status.textContent = "Sending...";
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        status.textContent = data.error || "Something went wrong.";
+        return;
+      }
+
+      status.textContent = data.message || "Your message has been sent.";
+      form.reset();
+    } catch (error) {
+      status.textContent =
+        "The form could not be submitted right now. Please try again later or use LinkedIn.";
+    }
+  });
+</script>

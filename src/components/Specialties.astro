@@ -1,0 +1,31 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="what-i-do" class="section-shell" aria-labelledby="specialties-heading">
+  <div class="section-grid gap-y-8">
+    <div class="col-span-12 lg:col-span-4">
+      <p class="section-kicker">What I Do</p>
+      <h2 id="specialties-heading" class="section-heading">
+        Five areas where better talent infrastructure changes the outcome.
+      </h2>
+    </div>
+    <div class="col-span-12 grid gap-4 md:grid-cols-2 lg:col-span-8">
+      {siteConfig.specializations.map((item) => (
+        <article class="panel panel-hover flex min-h-56 flex-col justify-between">
+          <div class="text-sm tracking-[0.3em] text-[var(--color-muted)]">
+            {item.icon}
+          </div>
+          <div class="space-y-4">
+            <h3 class="font-display text-3xl leading-none text-[var(--color-text)]">
+              {item.name}
+            </h3>
+            <p class="text-base leading-7 text-[var(--color-soft)]">
+              {item.outcome}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

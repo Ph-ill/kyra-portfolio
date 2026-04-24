@@ -1,0 +1,42 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="paths" class="section-shell" aria-labelledby="paths-heading">
+  <div class="section-grid">
+    <div class="col-span-12">
+      <div class="panel">
+        <div class="mb-8 max-w-3xl">
+          <p class="section-kicker">Two Paths</p>
+          <h2 id="paths-heading" class="section-heading !max-w-none">
+            Whether you are hiring for leadership or need a consultant to fix the machine, this site should get you to the right place fast.
+          </h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          <a href={siteConfig.dualCta.rolePath.href} target="_blank" rel="noopener noreferrer" class="cta-card">
+            <p class="text-sm uppercase tracking-[0.24em] text-[var(--color-muted)]">
+              {siteConfig.dualCta.rolePath.label}
+            </p>
+            <p class="font-display text-3xl text-[var(--color-text)]">
+              {siteConfig.dualCta.rolePath.actionLabel}
+            </p>
+            <p class="text-base leading-7 text-[var(--color-soft)]">
+              {siteConfig.dualCta.rolePath.description}
+            </p>
+          </a>
+          <a href={siteConfig.dualCta.consultingPath.href} class="cta-card">
+            <p class="text-sm uppercase tracking-[0.24em] text-[var(--color-muted)]">
+              {siteConfig.dualCta.consultingPath.label}
+            </p>
+            <p class="font-display text-3xl text-[var(--color-text)]">
+              {siteConfig.dualCta.consultingPath.actionLabel}
+            </p>
+            <p class="text-base leading-7 text-[var(--color-soft)]">
+              {siteConfig.dualCta.consultingPath.description}
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

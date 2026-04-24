@@ -3,19 +3,12 @@ version: '3.8'
 services:
   portfolio:
     build: .
-    container_name: phill-portfolio
+    container_name: built-by-kyra
     ports:
-      - "90:90"
+      - "${APP_PORT:-8080}:90"
     restart: unless-stopped
     environment:
-      - NODE_ENV=production
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-default-password-change-me}
-    volumes:
-      # Mount data directory for persistent visitor tracking
-      - ./data:/app/data
-    networks:
-      - Shared
-
-networks:
-  Shared:
-    external: true 
+      NODE_ENV: production
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      CONTACT_TO_EMAIL: ${CONTACT_TO_EMAIL:-}
+      CONTACT_FROM_EMAIL: ${CONTACT_FROM_EMAIL:-Portfolio Site <onboarding@resend.dev>}

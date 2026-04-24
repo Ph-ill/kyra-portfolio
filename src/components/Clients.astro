@@ -1,0 +1,61 @@
+---
+import { siteConfig } from "../config";
+
+const marqueeClients = [...siteConfig.clients, ...siteConfig.clients];
+const logoClassName = (name) =>
+  `client-logo-${name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")}`;
+---
+
+<section
+  id="clients"
+  class="section-shell client-section"
+  aria-labelledby="clients-heading"
+>
+  <div class="section-grid">
+    <div class="col-span-12">
+      <h2 id="clients-heading" class="sr-only">Selected clients</h2>
+    </div>
+  </div>
+  <div class="client-carousel-shell" role="list" aria-label="Selected clients">
+    <div class="client-fade client-fade-left" aria-hidden="true"></div>
+    <div class="client-fade client-fade-right" aria-hidden="true"></div>
+    <div class="client-marquee">
+      {marqueeClients.map((client, index) => (
+        <div
+          role="listitem"
+          class="client-card"
+          aria-hidden={index >= siteConfig.clients.length ? "true" : undefined}
+        >
+          <div class="client-card-inner">
+            {client.type === "image" ? (
+              <img
+                src={client.src}
+                alt={index >= siteConfig.clients.length ? "" : client.alt}
+                class={`client-logo ${
+                  client.renderMode === "native"
+                    ? "client-logo-native"
+                    : client.renderMode === "badge"
+                      ? "client-logo-badge"
+                      : "client-logo-invert"
+                } ${client.fit === "tall" ? "client-logo-tall" : ""} ${
+                  client.size === "large"
+                    ? "client-logo-large"
+                    : client.size === "hero"
+                      ? "client-logo-hero"
+                      : ""
+                } ${logoClassName(client.name)}`}
+                loading="lazy"
+              />
+            ) : (
+              <span class="client-wordmark">{client.fallback}</span>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

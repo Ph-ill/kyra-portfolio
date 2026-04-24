@@ -2,79 +2,25 @@
 import { siteConfig } from "../config";
 ---
 
-<section id="about" class="p-8 sm:p-12 md:p-16 lg:p-24" aria-labelledby="about-heading">
-  <div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-      <div class="lg:col-span-4">
-        <div class="flex items-center justify-between">
-          <div>
-            <h2
-              id="about-heading"
-              class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
-            >
-              About Me
-            </h2>
-            <div
-              class="w-[75px] h-[5px] mt-2 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
-              aria-hidden="true"
-            >
-            </div>
-          </div>
-          
-          <!-- Mobile Resume Link - Right Aligned -->
-          <div class="md:hidden">
-            <a
-              href={siteConfig.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-300 group"
-              aria-label="Download Phill Scargill's resume as PDF"
-              title="Download Resume"
-            >
-              <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900">Resume</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="text-gray-600 group-hover:text-gray-800 transition-colors duration-300"
-                role="img"
-                aria-label="Downward arrow icon"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 5l0 14" />
-                <path d="M18 13l-6 6l-6 -6" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="lg:col-span-8 space-y-8">
-        <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600">
-          {siteConfig.aboutMe}
+<section id="about" class="section-shell" aria-labelledby="about-heading">
+  <div class="section-grid gap-y-8">
+    <div class="col-span-12 lg:col-span-4">
+      <p class="section-kicker">About</p>
+      <h2 id="about-heading" class="section-heading">
+        {siteConfig.about.heading}
+      </h2>
+    </div>
+    <div class="col-span-12 lg:col-span-8">
+      <div class="panel space-y-8">
+        <p class="text-lg leading-8 text-[var(--color-soft)] md:text-xl">
+          {siteConfig.about.body}
         </p>
-
-        <div class="pt-4">
-          <h3 class="sr-only">Technical Skills</h3>
-          <div class="flex flex-wrap gap-3" role="list" aria-label="Technical skills and technologies">
-            {
-              siteConfig.skills.map((skill) => (
-                <span 
-                  class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200"
-                  role="listitem"
-                >
-                  {skill}
-                </span>
-              ))
-            }
-          </div>
+        <div class="flex flex-wrap gap-3" role="list" aria-label="Key credentials">
+          {siteConfig.about.credentials.map((item) => (
+            <span role="listitem" class="tag">
+              {item}
+            </span>
+          ))}
         </div>
       </div>
     </div>
