@@ -9,8 +9,14 @@ services:
     ports:
       - "${APP_PORT:-8080}:90"
     restart: unless-stopped
+    networks:
+      - Shared
     environment:
       NODE_ENV: production
       RESEND_API_KEY: ${RESEND_API_KEY:-}
       CONTACT_TO_EMAIL: ${CONTACT_TO_EMAIL:-}
       CONTACT_FROM_EMAIL: ${CONTACT_FROM_EMAIL:-Portfolio Site <onboarding@resend.dev>}
+
+networks:
+  Shared:
+    external: true
