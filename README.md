@@ -1,74 +1,54 @@
-# Phill Scargill - Portfolio
+# Kyra Scargill - Portfolio
 
-A personal portfolio website showcasing my work as a Control Systems Engineer, forked from [Ryan Fitzgerald's DevPortfolio template](https://github.com/RyanFitzgerald/devportfolio).
+A personal portfolio website for Kyra Scargill, Talent Acquisition & People Operations Consultant. Built with Astro and Tailwind CSS v4, forked and significantly redesigned from [Ph-ill/Phill-Scargill-Portfolio](https://github.com/Ph-ill/Phill-Scargill-Portfolio).
 
-## Changes Made to Original Template
+Live at: [builtbykyra.com](https://builtbykyra.com)
 
-### Design & UI Enhancements
-- **Profile Picture**: Added responsive profile photo that scales properly on both PC and mobile
-- **Thought Bubble**: Added animated floating thought bubble with "Thinking in ladder logic 🪜" text
-- **Project Animations**: Enhanced project boxes with floating bubble emoji animations on hover
-- **Responsive Layout**: Fixed name wrapping issues and improved mobile scaling
+## Changes Made from Original (Phill's Portfolio)
+
+### Complete Content Overhaul
+- **Rebranded** for Kyra Scargill (Willans) — Talent Acquisition & People Operations Consultant
+- **New config structure**: Expanded `src/config.ts` with HR/consulting-specific sections (specializations, case studies, testimonials, clients, contact form)
+- **Accent color**: Changed from blue to warm tan (`#d4a574`)
+
+### New Sections & Components
+- **Statement**: Full-width POV/positioning statement block
+- **Specialties**: Icon-driven service cards with outcome-focused copy
+- **Clients**: Logo grid showcasing notable client brands (Netflix, Google, Snap, Spotify, etc.)
+- **Case Studies**: Project showcase redesigned for consulting engagements
+- **Testimonials**: Social proof section with quotes
+- **DualCTA**: Two-column call-to-action block
+- **Contact**: Full contact form with server-side email sending via Nodemailer (`src/pages/api/contact.js`)
+
+### Design & UI Overhaul
+- **Redesigned Hero**: Removed profile photo and thought bubble; replaced with highlights list and dual CTA buttons
+- **Global stylesheet** (`src/styles/global.css`): Heavily expanded with new component styles, animations, and layout utilities
+- **Footer**: Rebuilt with consulting-appropriate links and branding
+- **Header**: Simplified navigation updated for new section structure
 
 ### Technical Infrastructure
-- **Server-Side Rendering**: Implemented `output: 'server'` for dynamic functionality
-- **Docker Deployment**: Containerized with Node.js runtime and persistent data volumes
-- **Nginx Proxy**: Configured for production deployment with SSL support
-
-### Visitor Tracking System
-- **Self-Hosted Analytics**: Built-in visitor tracking without third-party services
-- **Data Collection**: Tracks page views, unique visitors, IP addresses, location, visit duration, and referrer data
-- **Persistent Storage**: File-based JSON storage with Docker volume persistence
-- **Real-Time Dashboard**: Auto-refreshing admin panel that updates every 30 seconds
-
-### Accessibility & SEO
-- **Meta Tags**: Comprehensive Open Graph, Twitter Cards, and SEO meta tags
-- **Structured Data**: JSON-LD schema markup for better search engine understanding
-- **ARIA Attributes**: Enhanced screen reader support and semantic HTML
-- **Focus Management**: Improved keyboard navigation and focus indicators
-- **Robots.txt & Sitemap**: Search engine optimization files
-
-### Security Features
-- **Password Protection**: Secure admin dashboard with environment variable authentication
-- **Data Privacy**: Visitor data stored locally, no external tracking services
-- **Secure Headers**: Proper cache control and security headers
-
-## Screenshots
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <a href="Images/Main.png">
-          <img src="Images/Main.png" alt="Main Portfolio Page" width="400"/>
-        </a>
-        <br/>
-        <em>Main portfolio page with profile picture and thought bubble</em>
-      </td>
-      <td align="center">
-        <a href="Images/analytics.png">
-          <img src="Images/analytics.png" alt="Analytics Dashboard" width="400"/>
-        </a>
-        <br/>
-        <em>Real-time visitor analytics dashboard</em>
-      </td>
-    </tr>
-  </table>
-</div>
+- **Contact API**: Server-side contact form handler with SMTP email delivery
+- **Docker**: Updated `docker-compose.yml` and `docker-compose-simple.yml` for this deployment
+- **Environment config**: New `env.example` with SMTP and site URL variables
 
 ## Technologies Used
 
-- **Frontend**: Astro, Tailwind CSS, TypeScript
-- **Backend**: Node.js, File system storage
-- **Deployment**: Docker, Nginx Proxy Manager
+- **Frontend**: Astro, Tailwind CSS v4, TypeScript
+- **Backend**: Node.js, Nodemailer
+- **Deployment**: Docker, Nginx Proxy Manager, Portainer GitOps
 - **Hosting**: Self-hosted on home server
+
+## Development
+
+```bash
+npm run dev       # Start development server
+npm run build     # Build for production
+npm run preview   # Preview production build
+```
 
 ## Contact
 
-- **Email:** phill.scargill@gmail.com
-- **LinkedIn:** [Phillip Scargill](https://www.linkedin.com/in/phillip-scargill-4a709a274/)
-- **GitHub:** [Ph-ill](https://github.com/Ph-ill)
-- **Location:** Austin, TX
+- **LinkedIn:** [Kyra Willans](https://linkedin.com/in/kyrawillans)
 
 ## License
 
