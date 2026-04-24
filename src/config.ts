@@ -38,28 +38,33 @@ export const siteConfig = {
       outcome:
         "An ATS and sourcing stack that works for your team, not against it.",
       icon: "01",
+      caseStudyId: "cs-ats",
     },
     {
       name: "Employer Brand & Attraction",
       outcome: "A story candidates actually believe and act on.",
       icon: "02",
+      caseStudyId: "cs-careers-hub",
     },
     {
       name: "Recruiter Operations",
       outcome: "A recruiting team that runs efficiently and knows why.",
       icon: "03",
+      caseStudyId: "cs-recruiter-ops",
     },
     {
       name: "HR Data & Insights",
       outcome:
         "Dashboards and reports that drive decisions, not just inform them.",
       icon: "04",
+      caseStudyId: "cs-global-expansion",
     },
     {
       name: "AI & Productivity",
       outcome:
         "Hours back in your recruiters' weeks without sacrificing quality.",
       icon: "05",
+      caseStudyId: "cs-ai-sourcing",
     },
   ],
   clients: [
@@ -178,6 +183,7 @@ export const siteConfig = {
   ],
   caseStudies: [
     {
+      id: "cs-careers-hub",
       client: "Global Professional Services Firm",
       headline:
         "Rebuilt a fragmented candidate experience into a scalable hiring ecosystem",
@@ -190,6 +196,7 @@ export const siteConfig = {
       tags: ["Employer Brand & Attraction", "Talent Acquisition Systems"],
     },
     {
+      id: "cs-ats",
       client: "Enterprise Organization",
       headline:
         "Replaced an underperforming ATS with a scalable, data-driven hiring system",
@@ -202,6 +209,7 @@ export const siteConfig = {
       tags: ["Talent Acquisition Systems", "HR Data & Insights"],
     },
     {
+      id: "cs-ai-sourcing",
       client: "In-House Recruiting Team",
       headline:
         "Eliminated manual sourcing through a proprietary AI-powered candidate matching tool",
@@ -214,6 +222,7 @@ export const siteConfig = {
       tags: ["AI & Productivity", "Talent Acquisition Systems"],
     },
     {
+      id: "cs-recruiter-ops",
       client: "High-Growth Company",
       headline:
         "Built a data-driven recruiting function from fragmented spend and low accountability",
@@ -226,6 +235,7 @@ export const siteConfig = {
       tags: ["Recruiter Operations", "HR Data & Insights"],
     },
     {
+      id: "cs-rapid-scale",
       client: "New Enterprise Business Line",
       headline:
         "Scaled hiring rapidly for a new business line without compromising experience",
@@ -238,6 +248,7 @@ export const siteConfig = {
       tags: ["Recruiter Operations", "Employer Brand & Attraction"],
     },
     {
+      id: "cs-global-expansion",
       client: "Global Expansion Initiative",
       headline:
         "Enabled global expansion through strategic workforce infrastructure",
