@@ -216,6 +216,8 @@ body {
   gap: 2.25rem;
   width: max-content;
   animation: client-marquee 42s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .client-carousel-shell:hover .client-marquee {
