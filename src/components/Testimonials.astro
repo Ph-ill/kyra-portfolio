@@ -10,10 +10,10 @@ const { heading, kicker, items, id } = Astro.props;
         {heading}
       </h2>
     </div>
-    <div class="col-span-12 grid gap-5 lg:col-span-8">
+    <div class="testimonial-grid col-span-12 grid gap-5 lg:col-span-8">
       {items.map((item) => (
-        <figure class="panel space-y-6">
-          <blockquote class="font-display text-2xl leading-tight text-[var(--color-text)] md:text-4xl">
+        <figure class="testimonial-card panel space-y-6">
+          <blockquote class="testimonial-quote font-display text-[var(--color-text)]">
             “{item.quote}”
           </blockquote>
           <figcaption class="flex items-center gap-4">
