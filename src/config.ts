@@ -189,8 +189,9 @@ export const siteConfig = {
         "Rebuilt a fragmented candidate experience into a scalable hiring ecosystem",
       situation:
         "A global professional services firm lacked a centralized careers experience, creating candidate confusion, inconsistent messaging, and heavy manual lift for recruiters.",
+      icon: "✦",
       work:
-        "Designed and led the build of a Careers Hub as a single source of truth for hiring, including a Talent Network, process transparency, EVP storytelling, structured communications, and ATS integrations.",
+        "Designed and led the build of a Careers Hub as a single source of truth for hiring, including a Talent Network, process transparency, EVP storytelling, structured communications, and ATS integrations. Partnered closely with design and engineering to remediate critical functionality blockers pre-launch and drove UX refinements across application flow, navigation, accessibility, and visual hierarchy to ensure the site met both candidate-experience and compliance standards.",
       outcome:
         "Delivered a fully integrated careers ecosystem in 90 days, improving candidate trust and preparedness while reducing recruiter overhead through self-service discovery and inbound interest.",
       tags: ["Employer Brand & Attraction", "Talent Acquisition Systems"],
@@ -202,8 +203,9 @@ export const siteConfig = {
         "Replaced an underperforming ATS with a scalable, data-driven hiring system",
       situation:
         "The business had outgrown its legacy ATS and was dealing with unreliable workflows, limited reporting, and a poor experience for candidates and hiring managers.",
+      icon: "⌁",
       work:
-        "Led end-to-end vendor selection across 10+ platforms, aligned cross-functional stakeholders, secured executive buy-in, and implemented a modern ATS with custom workflows, integrations, and automations.",
+        "Conceptualized and directed an end-to-end ATS vendor evaluation across 10+ platforms. Co-led final vendor selection, authored executive proposal, secured C-suite buy-in, and led implementation of a modern ATS with custom workflows, integrations, and automations.",
       outcome:
         "Reduced annual recruiting technology and operational costs by roughly $100K while unlocking real-time visibility into hiring metrics and improving stakeholder experience across the lifecycle.",
       tags: ["Talent Acquisition Systems", "HR Data & Insights"],
@@ -215,6 +217,7 @@ export const siteConfig = {
         "Eliminated manual sourcing through a proprietary AI-powered candidate matching tool",
       situation:
         "Recruiters were relying on manual Boolean searches and keyword filtering, creating inefficiency and missed candidate opportunities.",
+      icon: "◈",
       work:
         "Conceptualized and delivered a custom AI-driven web application that reads job requirements and candidate data to automatically shortlist talent, then improves through recruiter feedback and ATS-aligned workflows.",
       outcome:
@@ -228,6 +231,7 @@ export const siteConfig = {
         "Built a data-driven recruiting function from fragmented spend and low accountability",
       situation:
         "Recruiting operations lacked structure, with excessive agency spend, no performance metrics, and inconsistent hiring outcomes.",
+      icon: "◎",
       work:
         "Designed a centralized recruiting model with clear ownership, SLAs, performance metrics, and analytics that tied recruiting activity to business outcomes and spend optimization.",
       outcome:
@@ -241,6 +245,7 @@ export const siteConfig = {
         "Scaled hiring rapidly for a new business line without compromising experience",
       situation:
         "A newly won enterprise contract required onboarding 100+ hires on a compressed timeline, many of whom were new to the workforce.",
+      icon: "➜",
       work:
         "Built a dedicated candidate experience framework with a custom landing page, structured communications, centralized support channels, and tight cross-functional coordination across recruiting, onboarding, and benefits.",
       outcome:
@@ -254,6 +259,7 @@ export const siteConfig = {
         "Enabled global expansion through strategic workforce infrastructure",
       situation:
         "International hiring was constrained by slow, costly, and opaque employment infrastructure, limiting growth opportunities.",
+      icon: "▣",
       work:
         "Led evaluation and implementation of a new global employment partner, aligned C-level stakeholders across HR, finance, and operations, and built supporting processes, training, and risk frameworks.",
       outcome:
@@ -303,6 +309,13 @@ export const siteConfig = {
         linkedin:
           "https://www.linkedin.com/in/shubhorghosh/?skipRedirect=true",
         initials: "SG",
+      },
+      {
+        quote:
+          "What I particularly appreciate about Kyra is her embrace of technology and her drive to automate and streamline processes for greater efficiency. Her efforts have significantly improved recruiter productivity, accelerated onboarding processes, and generated valuable insights for executives and hiring managers.",
+        name: "Anna Kharisova",
+        title: "SHRM-CP",
+        initials: "AK",
       },
     ],
   },

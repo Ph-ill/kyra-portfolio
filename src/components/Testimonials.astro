@@ -19,6 +19,8 @@ const { heading, kicker, items, id } = Astro.props;
           <figcaption class="flex items-center gap-4">
             <div class="testimonial-avatar" aria-hidden="true">{item.initials}</div>
             <div class="space-y-1">
+          {
+            item.linkedin ? (
               <a
                 href={item.linkedin}
                 target="_blank"
@@ -27,9 +29,17 @@ const { heading, kicker, items, id } = Astro.props;
               >
                 {item.name}
               </a>
-              <p class="text-sm leading-6 text-[var(--color-soft)]">
-                {item.title}, {item.company}
+            ) : (
+              <p class="text-base font-semibold text-[var(--color-text)]">
+                {item.name}
               </p>
+            )
+          }
+          {(item.title || item.company) && (
+            <p class="text-sm leading-6 text-[var(--color-soft)]">
+              {[item.title, item.company].filter(Boolean).join(", ")}
+            </p>
+          )}
             </div>
           </figcaption>
         </figure>

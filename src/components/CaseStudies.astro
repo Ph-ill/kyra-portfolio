@@ -13,13 +13,18 @@ import { siteConfig } from "../config";
     <div class="col-span-12 space-y-5 lg:col-span-8">
       {siteConfig.caseStudies.map((study) => (
         <article id={study.id} class="panel panel-hover space-y-6 [scroll-margin-top:6.5rem]">
-          <div class="space-y-3">
-            <p class="text-sm uppercase tracking-[0.28em] text-[var(--color-accent)]">
-              {study.client}
-            </p>
-            <h3 class="font-display text-3xl leading-tight text-[var(--color-text)] md:text-4xl">
-              {study.headline}
-            </h3>
+          <div class="flex items-start gap-5">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 font-display text-2xl text-[var(--color-accent)]" aria-hidden="true">
+              {study.icon}
+            </div>
+            <div class="space-y-3">
+              <p class="text-sm uppercase tracking-[0.28em] text-[var(--color-accent)]">
+                {study.client}
+              </p>
+              <h3 class="font-display text-3xl leading-tight text-[var(--color-text)] md:text-4xl">
+                {study.headline}
+              </h3>
+            </div>
           </div>
           <div class="grid gap-6 md:grid-cols-3">
             <div class="space-y-2">
