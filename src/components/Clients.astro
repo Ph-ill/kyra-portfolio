@@ -57,3 +57,26 @@ const logoClassName = (name) =>
     </div>
   </div>
 </section>
+
+<script>
+  (() => {
+    const shells = document.querySelectorAll(".client-carousel-shell");
+
+    shells.forEach((shell) => {
+      const pause = () => shell.classList.add("is-press-paused");
+      const resume = () => shell.classList.remove("is-press-paused");
+
+      shell.addEventListener("pointerdown", pause);
+      shell.addEventListener("pointerup", resume);
+      shell.addEventListener("pointercancel", resume);
+      shell.addEventListener("pointerleave", resume);
+
+      document.addEventListener("astro:before-swap", () => {
+        shell.removeEventListener("pointerdown", pause);
+        shell.removeEventListener("pointerup", resume);
+        shell.removeEventListener("pointercancel", resume);
+        shell.removeEventListener("pointerleave", resume);
+      }, { once: true });
+    });
+  })();
+</script>

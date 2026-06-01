@@ -324,7 +324,13 @@ body {
   backface-visibility: hidden;
 }
 
-.client-carousel-shell:hover .client-marquee {
+@media (hover: hover) and (pointer: fine) {
+  .client-carousel-shell:hover .client-marquee {
+    animation-play-state: paused;
+  }
+}
+
+.client-carousel-shell.is-press-paused .client-marquee {
   animation-play-state: paused;
 }
 
@@ -753,7 +759,7 @@ body {
 
 @media (max-width: 767px) {
   .client-marquee {
-    animation-duration: 44s;
+    animation-duration: 28s;
   }
 
   .client-card {
