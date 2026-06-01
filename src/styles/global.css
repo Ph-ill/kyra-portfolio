@@ -115,8 +115,8 @@ body {
 
 .hero-card {
   background:
-    linear-gradient(180deg, rgba(30, 36, 48, 0.44), rgba(13, 16, 24, 0.3)),
-    rgba(20, 25, 36, 0.24);
+    linear-gradient(180deg, rgba(30, 36, 48, 0.35), rgba(13, 16, 24, 0.24)),
+    rgba(20, 25, 36, 0.19);
   border-color: rgba(255, 255, 255, 0.11);
   border-top-color: rgba(212, 165, 116, 0.26);
   backdrop-filter: blur(14px) saturate(135%);
