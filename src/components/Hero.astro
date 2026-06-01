@@ -24,7 +24,7 @@ import { siteConfig } from "../config";
         </a>
       </div>
     </div>
-    <div class="lg:col-span-5">
+    <div class="hero-card-column lg:col-span-5">
       <aside class="hero-card">
         <div class="space-y-6">
           <div class="hero-photo-frame overflow-hidden rounded-[0.45rem] border border-white/10 bg-black/20">
@@ -76,7 +76,10 @@ import { siteConfig } from "../config";
 <script>
   (() => {
     const frame = document.querySelector(".hero-photo-frame");
+    const alternatePhoto = document.querySelector(".hero-photo-hover") as HTMLImageElement | null;
     if (!frame) return;
+
+    alternatePhoto?.decode?.().catch(() => undefined);
 
     const showAlternate = () => frame.classList.add("is-photo-swapped");
     const showOriginal = () => frame.classList.remove("is-photo-swapped");
