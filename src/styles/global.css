@@ -55,12 +55,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(4px) saturate(125%);
-  background:
-    linear-gradient(180deg, rgba(30, 36, 48, 0.17), rgba(13, 16, 24, 0.12)),
-    rgba(20, 25, 36, 0.09);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  background: transparent;
+  border-bottom: 0;
+  box-shadow: none;
 }
 
 .hero-shell {
