@@ -252,7 +252,7 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding: 0 1.25rem;
+  padding: 0;
 }
 
 .client-marquee {
@@ -260,7 +260,7 @@ body {
   align-items: stretch;
   gap: 2.25rem;
   width: max-content;
-  animation: client-marquee 42s linear infinite;
+  animation: client-marquee 72s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
 }
@@ -395,25 +395,6 @@ body {
 .client-logo-houlihan-lokey {
   max-width: min(14.5rem, 100%);
   max-height: 4.6rem;
-}
-
-.client-fade {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 4rem;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.client-fade-left {
-  left: 0;
-  background: linear-gradient(90deg, rgba(15, 17, 20, 1), rgba(15, 17, 20, 0));
-}
-
-.client-fade-right {
-  right: 0;
-  background: linear-gradient(270deg, rgba(15, 17, 20, 1), rgba(15, 17, 20, 0));
 }
 
 @keyframes client-marquee {
@@ -600,12 +581,14 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .testimonial-card:first-child {
+  .testimonial-card:first-child,
+  .testimonial-card:last-child:nth-child(odd),
+  #testimonials-leadership .testimonial-card {
     grid-column: span 2;
   }
 
   .client-carousel-shell {
-    padding: 0 2rem;
+    padding: 0;
   }
 
   .hero-card,
