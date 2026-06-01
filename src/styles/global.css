@@ -65,6 +65,8 @@ body {
 
 .hero-shell {
   position: relative;
+  margin-top: -5.25rem;
+  padding-top: 5.25rem;
   overflow: hidden;
 }
 
