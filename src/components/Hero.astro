@@ -3,9 +3,10 @@ import { siteConfig } from "../config";
 ---
 
 <section id="hero" class="hero-shell" aria-labelledby="hero-heading">
+  <canvas id="hero-flow" class="hero-flow" aria-hidden="true"></canvas>
   <div class="hero-orb hero-orb-left" aria-hidden="true"></div>
   <div class="hero-orb hero-orb-right" aria-hidden="true"></div>
-  <div class="hero-layout mx-auto grid min-h-[100svh] max-w-7xl items-start gap-10 px-6 pb-12 pt-10 lg:grid-cols-12 lg:px-10 lg:pb-12 lg:pt-8 xl:pt-8">
+  <div class="hero-layout mx-auto grid min-h-[100svh] max-w-7xl items-center gap-10 px-6 pb-12 pt-10 lg:grid-cols-12 lg:px-10 lg:pb-12 lg:pt-8 xl:pt-8">
     <div class="lg:col-span-7 lg:pt-16">
       <p class="hero-eyebrow section-kicker mb-6">{siteConfig.hero.eyebrow}</p>
       <h1 id="hero-heading" class="hero-title font-display text-6xl leading-none text-[var(--color-text)] sm:text-7xl md:text-8xl lg:text-[8.5rem]">
@@ -62,3 +63,104 @@ import { siteConfig } from "../config";
     </div>
   </div>
 </section>
+
+<script>
+  (() => {
+    const canvas = document.getElementById("hero-flow") as HTMLCanvasElement | null;
+    if (!canvas) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const hero = canvas.closest(".hero-shell") as HTMLElement | null;
+    const ctx = canvas.getContext("2d");
+    if (!hero || !ctx) return;
+
+    const colors = ["#d4a574", "#f5efe7", "#8e6f4f"];
+    const particles: Array<{ x: number; y: number; life: number; color: string }> = [];
+    let width = 0;
+    let height = 0;
+    let tick = 0;
+    let raf = 0;
+
+    const random = (x: number, y: number) => {
+      const n = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
+      return n - Math.floor(n);
+    };
+
+    const noise = (x: number, y: number) => {
+      const ix = Math.floor(x);
+      const iy = Math.floor(y);
+      const fx = x - ix;
+      const fy = y - iy;
+      const a = random(ix, iy);
+      const b = random(ix + 1, iy);
+      const c = random(ix, iy + 1);
+      const d = random(ix + 1, iy + 1);
+      const ux = fx * fx * (3 - 2 * fx);
+      const uy = fy * fy * (3 - 2 * fy);
+      return a + (b - a) * ux + (c - a) * uy + (a - b - c + d) * ux * uy;
+    };
+
+    const resetParticle = (particle: { x: number; y: number; life: number; color: string }, i: number) => {
+      particle.x = Math.random() * width;
+      particle.y = Math.random() * height;
+      particle.life = 0.55 + Math.random() * 0.45;
+      particle.color = colors[i % colors.length];
+    };
+
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = hero.clientWidth;
+      height = hero.clientHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const target = Math.max(90, Math.min(190, Math.round((width * height) / 9500)));
+      while (particles.length < target) particles.push({ x: 0, y: 0, life: 0, color: colors[0] });
+      particles.length = target;
+      particles.forEach(resetParticle);
+    };
+
+    const draw = () => {
+      raf = requestAnimationFrame(draw);
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        const particle = particles[i];
+        const angle = noise(particle.x * 0.0035 + tick * 0.00045, particle.y * 0.0035 + 14) * Math.PI * 5;
+        const speed = 0.45 + noise(particle.x * 0.002, particle.y * 0.002 + 44) * 0.7;
+        const oldX = particle.x;
+        const oldY = particle.y;
+        particle.x += Math.cos(angle) * speed;
+        particle.y += Math.sin(angle) * speed;
+        particle.life -= 0.0013;
+
+        if (particle.life <= 0 || particle.x < -20 || particle.x > width + 20 || particle.y < -20 || particle.y > height + 20) {
+          resetParticle(particle, i);
+          continue;
+        }
+
+        ctx.globalAlpha = particle.life * 0.13;
+        ctx.strokeStyle = particle.color;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(oldX, oldY);
+        ctx.lineTo(particle.x, particle.y);
+        ctx.stroke();
+      }
+
+      ctx.globalAlpha = 1;
+      tick += 1;
+    };
+
+    resize();
+    draw();
+    window.addEventListener("resize", resize);
+    document.addEventListener("astro:before-swap", () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    }, { once: true });
+  })();
+</script>
