@@ -752,6 +752,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .client-marquee {
+    animation-duration: 44s;
+  }
+
   .client-card {
     flex-basis: clamp(10rem, 62vw, 14rem);
   }

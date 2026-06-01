@@ -144,22 +144,17 @@ import { siteConfig } from "../config";
       particle.color = colors[i % colors.length];
     };
 
-    const spawnBurst = (event: PointerEvent) => {
+    const spawnClickNode = (event: PointerEvent) => {
       const rect = hero.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-      const burstCount = event.pointerType === "mouse" ? 72 : 56;
 
-      for (let i = 0; i < burstCount; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const radius = Math.random() * 22;
-        particles.push({
-          x: x + Math.cos(angle) * radius,
-          y: y + Math.sin(angle) * radius,
-          life: 0.9 + Math.random() * 0.45,
-          color: colors[(i + Math.floor(tick)) % colors.length],
-        });
-      }
+      particles.push({
+        x,
+        y,
+        life: 0.9 + Math.random() * 0.45,
+        color: colors[Math.floor(tick) % colors.length],
+      });
 
       if (particles.length > maxParticles) {
         particles.splice(0, particles.length - maxParticles);
@@ -249,13 +244,13 @@ import { siteConfig } from "../config";
     draw();
     window.addEventListener("resize", resize);
     hero.addEventListener("pointermove", handlePointerMove);
-    hero.addEventListener("pointerdown", spawnBurst);
+    hero.addEventListener("pointerdown", spawnClickNode);
     hero.addEventListener("pointerleave", handlePointerLeave);
     document.addEventListener("astro:before-swap", () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       hero.removeEventListener("pointermove", handlePointerMove);
-      hero.removeEventListener("pointerdown", spawnBurst);
+      hero.removeEventListener("pointerdown", spawnClickNode);
       hero.removeEventListener("pointerleave", handlePointerLeave);
     }, { once: true });
   })();
