@@ -315,6 +315,8 @@ export const siteConfig = {
           "What I particularly appreciate about Kyra is her embrace of technology and her drive to automate and streamline processes for greater efficiency. Her efforts have significantly improved recruiter productivity, accelerated onboarding processes, and generated valuable insights for executives and hiring managers.",
         name: "Anna Kharisova",
         title: "SHRM-CP",
+        linkedin:
+          "https://www.linkedin.com/in/annakharisovapdx/?lipi=urn%3Ali%3Apage%3Ap_mwlite_my_network%3B7fWLj4b4SgCo6DSUe0Udtw%3D%3D",
         initials: "AK",
       },
     ],
