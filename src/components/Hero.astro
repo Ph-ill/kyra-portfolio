@@ -27,14 +27,23 @@ import { siteConfig } from "../config";
     <div class="lg:col-span-5">
       <aside class="hero-card">
         <div class="space-y-6">
-          <div class="overflow-hidden rounded-[0.45rem] border border-white/10 bg-black/20">
+          <div class="hero-photo-frame overflow-hidden rounded-[0.45rem] border border-white/10 bg-black/20">
             <img
               src="/headshot.jpeg"
               alt="Professional headshot of Kyra Scargill."
-              class="hero-photo aspect-[4/5] w-full object-cover"
+              class="hero-photo hero-photo-default aspect-[4/5] w-full object-cover"
               loading="eager"
               width="960"
               height="1200"
+            />
+            <img
+              src="/headshot-hover.jpg"
+              alt="Playful alternate photo of Kyra Scargill."
+              class="hero-photo hero-photo-hover aspect-[4/5] w-full object-cover"
+              loading="eager"
+              width="1254"
+              height="1254"
+              aria-hidden="true"
             />
           </div>
           <div>
@@ -63,6 +72,25 @@ import { siteConfig } from "../config";
     </div>
   </div>
 </section>
+
+<script>
+  (() => {
+    const frame = document.querySelector(".hero-photo-frame");
+    if (!frame) return;
+
+    const showAlternate = () => frame.classList.add("is-photo-swapped");
+    const showOriginal = () => frame.classList.remove("is-photo-swapped");
+
+    frame.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse") showAlternate();
+    });
+    frame.addEventListener("pointerleave", showOriginal);
+    frame.addEventListener("pointerdown", showAlternate);
+    frame.addEventListener("pointerup", showOriginal);
+    frame.addEventListener("pointercancel", showOriginal);
+    frame.addEventListener("lostpointercapture", showOriginal);
+  })();
+</script>
 
 <script>
   (() => {

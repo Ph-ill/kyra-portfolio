@@ -130,6 +130,31 @@ body {
     0 18px 44px rgba(0, 0, 0, 0.18);
 }
 
+.hero-photo-frame {
+  position: relative;
+}
+
+.hero-photo {
+  object-position: center center;
+}
+
+.hero-photo-hover {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+
+.hero-photo-frame.is-photo-swapped .hero-photo-hover {
+  opacity: 1;
+}
+
+.hero-photo-frame.is-photo-swapped .hero-photo-default {
+  opacity: 0;
+}
+
 .panel-hover {
   transition:
     transform 180ms ease,
@@ -677,7 +702,7 @@ body {
   .hero-photo {
     aspect-ratio: 4 / 3.35;
     max-height: 19rem;
-    object-position: center 28%;
+    object-position: center center;
   }
 
   .hero-card ul {
