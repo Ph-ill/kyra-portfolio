@@ -604,8 +604,12 @@ body {
     min-height: auto;
     max-width: 72rem;
     gap: 2rem;
-    padding-top: 4rem;
+    padding-top: 1rem;
     padding-bottom: 1.5rem;
+  }
+
+  .hero-layout > div:first-child {
+    padding-top: 0;
   }
 
   .hero-title {
