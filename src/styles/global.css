@@ -69,10 +69,10 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.38;
+  opacity: 0.9;
   pointer-events: none;
   mix-blend-mode: screen;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.36) 62%, transparent 100%);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.82) 68%, transparent 100%);
 }
 
 .hero-layout {

@@ -66,6 +66,9 @@ import { siteConfig } from "../config";
 
 <script>
   (() => {
+    // Hero background: Perlin flow field particle streams.
+    // Adapted from the MIT-licensed Odysseus hero effect:
+    // https://github.com/pewdiepie-archdaemon/odysseus
     const canvas = document.getElementById("hero-flow") as HTMLCanvasElement | null;
     if (!canvas) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -75,6 +78,7 @@ import { siteConfig } from "../config";
     if (!hero || !ctx) return;
 
     const colors = ["#d4a574", "#f5efe7", "#8e6f4f"];
+    const fade = "rgba(15,17,20,0.06)";
     const particles: Array<{ x: number; y: number; life: number; color: string }> = [];
     let width = 0;
     let height = 0;
@@ -117,38 +121,42 @@ import { siteConfig } from "../config";
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const target = Math.max(90, Math.min(190, Math.round((width * height) / 9500)));
-      while (particles.length < target) particles.push({ x: 0, y: 0, life: 0, color: colors[0] });
-      particles.length = target;
-      particles.forEach(resetParticle);
+      if (!particles.length) {
+        const target = Math.max(220, Math.min(360, Math.round((width * height) / 3400)));
+        for (let i = 0; i < target; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            life: Math.random(),
+            color: colors[i % colors.length],
+          });
+        }
+      }
     };
 
     const draw = () => {
       raf = requestAnimationFrame(draw);
-      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = fade;
+      ctx.fillRect(0, 0, width, height);
 
       for (let i = 0; i < particles.length; i++) {
         const particle = particles[i];
-        const angle = noise(particle.x * 0.0035 + tick * 0.00045, particle.y * 0.0035 + 14) * Math.PI * 5;
-        const speed = 0.45 + noise(particle.x * 0.002, particle.y * 0.002 + 44) * 0.7;
-        const oldX = particle.x;
-        const oldY = particle.y;
+        const angle = noise(particle.x * 0.004 + tick * 0.0008, particle.y * 0.004 + 100) * Math.PI * 6;
+        const speed = 1 + noise(particle.x * 0.003, particle.y * 0.003 + 50) * 1.5;
         particle.x += Math.cos(angle) * speed;
         particle.y += Math.sin(angle) * speed;
-        particle.life -= 0.0013;
+        particle.life -= 0.001;
 
-        if (particle.life <= 0 || particle.x < -20 || particle.x > width + 20 || particle.y < -20 || particle.y > height + 20) {
+        if (particle.life <= 0 || particle.x < 0 || particle.x > width || particle.y < 0 || particle.y > height) {
           resetParticle(particle, i);
           continue;
         }
 
-        ctx.globalAlpha = particle.life * 0.13;
-        ctx.strokeStyle = particle.color;
-        ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(oldX, oldY);
-        ctx.lineTo(particle.x, particle.y);
-        ctx.stroke();
+        ctx.arc(particle.x, particle.y, 1.1, 0, Math.PI * 2);
+        ctx.fillStyle = particle.color;
+        ctx.globalAlpha = particle.life * 0.18;
+        ctx.fill();
       }
 
       ctx.globalAlpha = 1;
