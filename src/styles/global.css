@@ -609,7 +609,7 @@ body {
   }
 
   .hero-layout > div:first-child {
-    padding-top: 0;
+    padding-top: 10.75rem;
   }
 
   .hero-title {
