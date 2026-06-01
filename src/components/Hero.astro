@@ -80,6 +80,7 @@ import { siteConfig } from "../config";
     const colors = ["#d4a574", "#f5efe7", "#8e6f4f"];
     const fade = "rgba(15,17,20,0.2)";
     const particles: Array<{ x: number; y: number; life: number; color: string }> = [];
+    const pointer = { x: 0, y: 0, vx: 0, vy: 0, active: false };
     let width = 0;
     let height = 0;
     let tick = 0;
@@ -134,6 +135,21 @@ import { siteConfig } from "../config";
       }
     };
 
+    const handlePointerMove = (event: PointerEvent) => {
+      const rect = hero.getBoundingClientRect();
+      const nextX = event.clientX - rect.left;
+      const nextY = event.clientY - rect.top;
+      pointer.vx = nextX - pointer.x;
+      pointer.vy = nextY - pointer.y;
+      pointer.x = nextX;
+      pointer.y = nextY;
+      pointer.active = true;
+    };
+
+    const handlePointerLeave = () => {
+      pointer.active = false;
+    };
+
     const draw = () => {
       raf = requestAnimationFrame(draw);
       ctx.fillStyle = fade;
@@ -145,6 +161,16 @@ import { siteConfig } from "../config";
         const speed = 1 + noise(particle.x * 0.003, particle.y * 0.003 + 50) * 1.5;
         particle.x += Math.cos(angle) * speed;
         particle.y += Math.sin(angle) * speed;
+
+        if (pointer.active) {
+          const dx = particle.x - pointer.x;
+          const dy = particle.y - pointer.y;
+          const distance = Math.hypot(dx, dy);
+          const influence = Math.max(0, 1 - distance / 260);
+          particle.x += pointer.vx * influence * 0.018;
+          particle.y += pointer.vy * influence * 0.018;
+        }
+
         particle.life -= 0.001;
 
         if (particle.life <= 0 || particle.x < 0 || particle.x > width || particle.y < 0 || particle.y > height) {
@@ -155,20 +181,26 @@ import { siteConfig } from "../config";
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, 1.1, 0, Math.PI * 2);
         ctx.fillStyle = particle.color;
-        ctx.globalAlpha = particle.life * 0.32;
+        ctx.globalAlpha = particle.life * 0.44;
         ctx.fill();
       }
 
       ctx.globalAlpha = 1;
+      pointer.vx *= 0.86;
+      pointer.vy *= 0.86;
       tick += 1;
     };
 
     resize();
     draw();
     window.addEventListener("resize", resize);
+    hero.addEventListener("pointermove", handlePointerMove);
+    hero.addEventListener("pointerleave", handlePointerLeave);
     document.addEventListener("astro:before-swap", () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      hero.removeEventListener("pointermove", handlePointerMove);
+      hero.removeEventListener("pointerleave", handlePointerLeave);
     }, { once: true });
   })();
 </script>
