@@ -185,23 +185,6 @@ body {
   scroll-margin-top: 6.5rem;
 }
 
-@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-snap-type: y proximity;
-  }
-
-  #contact,
-  #what-i-do,
-  #clients,
-  #case-studies,
-  #about,
-  #paths,
-  #testimonials-consulting,
-  #testimonials-leadership {
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
-  }
-}
 
 .section-grid {
   margin: 0 auto;
@@ -620,7 +603,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-    scroll-snap-type: none;
   }
 
   *,
